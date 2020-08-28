@@ -5,14 +5,14 @@ namespace FT
 {
     public class FTScrollRectGrid : FTScrollRectBase
     {
-        public FTCellBase dhCell;
+        public FTNodeBase dhCell;
         public float spacing;
         public float padding;
         public int preLineCount = 4;
         public FTDirection direction;
 
-        Stack<FTCellBase> cellPool = new Stack<FTCellBase>();
-        List<FTCellBase> activeCells = new List<FTCellBase>();
+        Stack<FTNodeBase> cellPool = new Stack<FTNodeBase>();
+        List<FTNodeBase> activeCells = new List<FTNodeBase>();
 
         float lineSize;
         float cellSize;
@@ -247,7 +247,7 @@ namespace FT
             return cellIndex / preLineCount;
         }
 
-        FTCellBase GetCell()
+        FTNodeBase GetCell()
         {
             if (cellPool.Count > 0)
             {
@@ -259,7 +259,7 @@ namespace FT
                 t.SetParent(ContentTrans);
                 t.localScale = Vector3.one;
                 t.anchoredPosition3D = Vector3.zero;
-                var newCell = t.GetComponent<FTCellBase>();
+                var newCell = t.GetComponent<FTNodeBase>();
                 newCell.objIndex = instantiateCount;
                 OnInstantiateCell(newCell);
                 instantiateCount++;
@@ -267,14 +267,14 @@ namespace FT
             }
         }
 
-        void Pool(FTCellBase cell)
+        void Pool(FTNodeBase cell)
         {
             activeCells.Remove(cell);
             cell.gameObject.SetActive(false);
             cellPool.Push(cell);
         }
 
-        bool NeedPool(FTCellBase cell)
+        bool NeedPool(FTNodeBase cell)
         {
             if (activeCells.IndexOf(cell) == 0)
             {

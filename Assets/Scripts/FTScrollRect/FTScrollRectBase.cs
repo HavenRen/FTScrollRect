@@ -45,16 +45,16 @@ namespace FT
             }
         }
 
-        List<FTCellBase> cells = new List<FTCellBase>();
-        Action<FTCellBase> InitAction;
-        protected Action<int, FTCellBase> RefreshAction;
+        List<FTNodeBase> cells = new List<FTNodeBase>();
+        Action<FTNodeBase> InitAction;
+        protected Action<int, FTNodeBase> RefreshAction;
 
-        public void SetInitAction(Action<FTCellBase> action)
+        public void SetInitAction(Action<FTNodeBase> action)
         {
             InitAction = action;
         }
 
-        public void SetRefreshAction(Action<int, FTCellBase> action)
+        public void SetRefreshAction(Action<int, FTNodeBase> action)
         {
             RefreshAction = action;
         }
@@ -65,7 +65,7 @@ namespace FT
             RefreshAction?.Invoke(dataIndex, cell);
         }
 
-        protected void OnInstantiateCell(FTCellBase cell)
+        protected void OnInstantiateCell(FTNodeBase cell)
         {
             InitAction?.Invoke(cell);
             cells.Add(cell);

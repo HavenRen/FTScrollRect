@@ -5,12 +5,12 @@ namespace FT
 {
     public class FTScrollRectCommon : FTScrollRectBase
     {
-        public FTCellBase dhCell;
+        public FTNodeBase dhCell;
         public float spacing;
         public FTDirection direction;
 
-        Stack<FTCellBase> cellPool = new Stack<FTCellBase>();
-        List<FTCellBase> activeCells = new List<FTCellBase>();
+        Stack<FTNodeBase> cellPool = new Stack<FTNodeBase>();
+        List<FTNodeBase> activeCells = new List<FTNodeBase>();
 
         float cellSize;
         int instantiateCount;
@@ -165,7 +165,7 @@ namespace FT
             cell.dataIndex = downIndex + 1;
             RefreshCell(cell.dataIndex, cell.objIndex);
             var pos = direction == FTDirection.Vertical ?
-                new Vector2(0.0f, (-downIndex - 1) * cellSize) :new Vector2((-downIndex - 1) * cellSize, 0.0f);
+                new Vector2(0.0f, (-downIndex - 1) * cellSize) : new Vector2((-downIndex - 1) * cellSize, 0.0f);
             cell.CachedRectTransform.anchoredPosition = pos;
             activeCells.Add(cell);
             cell.gameObject.SetActive(true);
@@ -184,14 +184,14 @@ namespace FT
             cell.dataIndex = topIndex - 1;
             RefreshCell(cell.dataIndex, cell.objIndex);
             var pos = direction == FTDirection.Vertical ?
-                new Vector2(0.0f, -(topIndex - 1) * cellSize) :new Vector2(-(topIndex - 1) * cellSize, 0.0f);
+                new Vector2(0.0f, -(topIndex - 1) * cellSize) : new Vector2(-(topIndex - 1) * cellSize, 0.0f);
             cell.CachedRectTransform.anchoredPosition = pos;
             activeCells.Insert(0, cell);
             cell.gameObject.SetActive(true);
             return true;
         }
 
-        FTCellBase GetCell()
+        FTNodeBase GetCell()
         {
             if (cellPool.Count > 0)
             {
@@ -203,7 +203,7 @@ namespace FT
                 t.SetParent(ContentTrans);
                 t.localScale = Vector3.one;
                 t.anchoredPosition3D = Vector3.zero;
-                var newCell = t.GetComponent<FTCellBase>();
+                var newCell = t.GetComponent<FTNodeBase>();
                 newCell.objIndex = instantiateCount;
                 OnInstantiateCell(newCell);
                 instantiateCount++;
@@ -211,14 +211,14 @@ namespace FT
             }
         }
 
-        void Pool(FTCellBase cell)
+        void Pool(FTNodeBase cell)
         {
             activeCells.Remove(cell);
             cell.gameObject.SetActive(false);
             cellPool.Push(cell);
         }
 
-        bool NeedPool(FTCellBase cell)
+        bool NeedPool(FTNodeBase cell)
         {
             if (activeCells.IndexOf(cell) == 0)
             {

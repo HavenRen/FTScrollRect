@@ -713,7 +713,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1230668959
 RectTransform:
   m_ObjectHideFlags: 0
@@ -750,6 +750,7 @@ MonoBehaviour:
   text: {fileID: 567107954}
   image: {fileID: 1695860709}
   canvasGroup: {fileID: 1230668961}
+  isMultSize: 0
 --- !u!225 &1230668961
 CanvasGroup:
   m_ObjectHideFlags: 0

@@ -63,13 +63,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\FTScrollRect\FTCell.cs" />
     <Compile Include="Assets\Scripts\FTScrollRect\FTDirection.cs" />
+    <Compile Include="Assets\Scripts\FTScrollRect\FTNodeBase.cs" />
     <Compile Include="Assets\Scripts\FTScrollRect\FTScrollRectBase.cs" />
     <Compile Include="Assets\Scripts\FTScrollRect\FTScrollRectCommon.cs" />
     <Compile Include="Assets\Scripts\FTScrollRect\FTScrollRectGrid.cs" />
     <Compile Include="Assets\Scripts\FTScrollRect\FTScrollRectMultSize.cs" />
-    <Compile Include="Assets\Scripts\Test\TestCell.cs" />
+    <Compile Include="Assets\Scripts\Test\TestNode.cs" />
     <Compile Include="Assets\Scripts\Test\TestScroll.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>/Users/droidhang/renheng/FTScrollRect/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
@@ -290,11 +290,11 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>/Applications/Unity_2018/Unity_2018.app/Contents/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>/Users/droidhang/renheng/FTScrollRect/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
     <Reference Include="DOTween">
       <HintPath>/Users/droidhang/renheng/FTScrollRect/Assets/Plugins/DOTween/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.StandardEvents">
+      <HintPath>/Users/droidhang/renheng/FTScrollRect/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>/Applications/Unity_2018/Unity_2018.app/Contents/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

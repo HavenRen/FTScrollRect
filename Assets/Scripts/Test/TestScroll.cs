@@ -31,25 +31,25 @@ public class TestScroll : MonoBehaviour
 
         ftScrollRect.SetInitAction((cell) =>
         {
-            var testCell = cell as TestCell;
+            var testCell = cell as TestNode;
             if (delayed != null)
             {
                 testCell.canvasGroup.alpha = 0;
-                var tween = testCell.canvasGroup.DOFade(1f, 0.25f);
+                var tween = testCell.canvasGroup.DOFade(1f, 0.4f);
                 tween.SetEase(Ease.InOutCirc);
             }
         });
 
         ftScrollRect.SetRefreshAction((index, cell) =>
         {
-            var testCell = cell as TestCell;
+            var testCell = cell as TestNode;
             testCell.Refresh(datas[index]);
         });
 
         ftScrollRect.Refill(0);
 
         var current = 0;
-        StartDelay(0.1f, () =>
+        StartDelay(0.2f, () =>
         {
             current++;
             ftScrollRect.SetCount(current + 1);

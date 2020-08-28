@@ -2,7 +2,7 @@
 using FT;
 using UnityEngine;
 
-public class TestCell : FTCellBase
+public class TestNode : FTNodeBase
 {
     public Text text;
     public Image image;

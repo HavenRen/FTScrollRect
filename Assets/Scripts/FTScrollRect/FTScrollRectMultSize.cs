@@ -5,12 +5,12 @@ namespace FT
 {
     public class FTScrollRectMultSize : FTScrollRectBase
     {
-        public FTCellBase dhCell;
+        public FTNodeBase dhCell;
         public float spacing;
         public FTDirection direction;
 
-        Stack<FTCellBase> cellPool = new Stack<FTCellBase>();
-        List<FTCellBase> activeCells = new List<FTCellBase>();
+        Stack<FTNodeBase> cellPool = new Stack<FTNodeBase>();
+        List<FTNodeBase> activeCells = new List<FTNodeBase>();
 
         int instantiateCount;
         int cellCount;
@@ -234,7 +234,7 @@ namespace FT
             return true;
         }
 
-        FTCellBase GetCell()
+        FTNodeBase GetCell()
         {
             if (cellPool.Count > 0)
             {
@@ -246,7 +246,7 @@ namespace FT
                 t.SetParent(ContentTrans);
                 t.localScale = Vector3.one;
                 t.anchoredPosition3D = Vector3.zero;
-                var newCell = t.GetComponent<FTCellBase>();
+                var newCell = t.GetComponent<FTNodeBase>();
                 newCell.objIndex = instantiateCount;
                 OnInstantiateCell(newCell);
                 instantiateCount++;
@@ -254,14 +254,14 @@ namespace FT
             }
         }
 
-        void Pool(FTCellBase cell)
+        void Pool(FTNodeBase cell)
         {
             activeCells.Remove(cell);
             cell.gameObject.SetActive(false);
             cellPool.Push(cell);
         }
 
-        bool NeedPull(FTCellBase cell)
+        bool NeedPull(FTNodeBase cell)
         {
             if (activeCells.IndexOf(cell) == 0)
             {

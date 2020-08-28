@@ -2,7 +2,7 @@
 
 namespace FT
 {
-    public class FTCellBase : MonoBehaviour
+    public class FTNodeBase : MonoBehaviour
     {
         public Vector2 AnchoredPosition
         {
